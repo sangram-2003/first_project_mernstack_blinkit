@@ -1,4 +1,6 @@
+import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+
 
 const userSchema  = mongoose.Schema({
    
@@ -6,8 +8,6 @@ phoneNumber:{
     type: Number,
     required: true,
    
-    unique:true,
-    index:true,
 },
 role:{
     type:String,
@@ -31,7 +31,8 @@ otp:{
       default: false,
     },
 refreshToken:{
-    type:String
+    type:String,
+     default: "",
 }
 
 
