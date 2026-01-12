@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { User } from "../models/user.models.js";
 import { sendOtp } from "../utils/smsSender.js";
-
+import jwt from "jsonwebtoken"
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -55,6 +55,8 @@ export const registerUser = asyncHandler(async (req, res)=>{
     throw new ApiError(400 , `failed sent sms ${result.error.Details} `)
   }
 
+ 
+
   const user = await User.create({
     phoneNumber:phoneNumber,
     address:address,
@@ -63,14 +65,44 @@ export const registerUser = asyncHandler(async (req, res)=>{
     isVerify: false,
 
   })
+  const tempToken = jwt.sign(
+    { userId: user._id },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: "5m" }
+  );
 
 
+  const data ={
+    user,
+    tempToken
+
+
+  }
   
 return res
     .status(201)
-    .json(new ApiResponse(201,user, "User created successfully"));
+    .json(new ApiResponse(201,data, "User created successfully"));
 
 
+})
+
+export const verifyOtp = asyncHandler(async (req,res)=>{
+  const {phoneNumber, otp}=req.body;
+  if (!phoneNumber || !otp) throw new ApiError(400, "Phone number and OTP are required");
+
+  const user = await User.findOne({ phoneNumber }).select("+otp +otpExpiry");
+
+ if (!user) throw new ApiError(404, "User not found");
+ if (user.isVerify) throw new ApiError(400, "User already verified");
+if (user.otp !== otp) throw new ApiError(400, "Invalid OTP");
+  if (user.otpExpiry < Date.now()) throw new ApiError(400, "OTP expired");
+ user.isVerify = true;
+  user.otp = undefined;
+  user.otpExpiry = undefined;
+  await user.save();
+ return res
+    .status(200)
+    .json(new ApiResponse(200, {}, "OTP verified successfully"));
 })
 
 
