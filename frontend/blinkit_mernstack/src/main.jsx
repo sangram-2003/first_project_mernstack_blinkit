@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Signup from './pages/Signup.jsx'
-import VerifyOtp from "./pages/VerifyOtp.jsx"
+import Login from "./pages/Login.jsx"
+
 const router = createBrowserRouter([
   {
     
@@ -13,11 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/register',
-        element: <Signup/>
-      },
-      {
-        path: '/verify',
-        element: <VerifyOtp/>
+        element: <Login/>
       }
     ]
   }
