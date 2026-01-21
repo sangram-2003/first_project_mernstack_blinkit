@@ -81,9 +81,13 @@ function App() {
     <br></br>
     <button onClick={handleLogout} 
     className='p-4 mt-4 bg-red-600'>logout</button> */}
-    <Navbar/>
-    <AppRoutes/>
+    <div className="w-full">
+       <Navbar/>
+    <Outlet/>
     <Footer/>
+    </div>
+
+   
     </>
   );
 }
