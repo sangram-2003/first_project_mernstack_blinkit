@@ -35,7 +35,7 @@ const FooterSection = ({ title, children }) => {
 
 function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 mt-16 border-t dark:border-gray-800">
+    <footer className="bg-gray-100 mt-16 border-t dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 py-12">
 
         {/* Top Grid */}
