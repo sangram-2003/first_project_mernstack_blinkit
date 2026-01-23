@@ -84,7 +84,7 @@ export const deleteCategory = asyncHandler(async (req, res) => {
 
 export const updateCategory = asyncHandler(async (req,res)=>{
   const {id}=req.params;
-   const { description ,isActive }=req.body;
+   const {name, description ,isActive }=req.body;
    if(!name )
     {
       throw new  ApiError(400, "Name category required");

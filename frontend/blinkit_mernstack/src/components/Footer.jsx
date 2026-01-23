@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 
 
@@ -51,12 +53,23 @@ function Footer() {
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-4 text-xl">
-              <a href="https://instagram.com" target="_blank">📸</a>
-              <a href="https://twitter.com" target="_blank">🐦</a>
-              <a href="https://facebook.com" target="_blank">📘</a>
-              <a href="https://linkedin.com" target="_blank">💼</a>
-            </div>
+             <div className="flex gap-4 mt-4 text-xl">
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                      <FaInstagram />
+                  </a>
+
+                  <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                      <FaTwitter />
+                  </a>
+
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                     <FaFacebook />
+                  </a>
+
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                     <FaLinkedin />
+                  </a>
+    </div>
           </div>
 
           {/* Company */}

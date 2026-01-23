@@ -11,5 +11,5 @@ router.route("/get-all-categories").get(getAllCategories);
 router.route("/:slug").get(getCategoryBySlug);
 router.route("/:id").delete(deleteCategory);
 router.route("/:id").patch(updateCategory);
-router.route("/:id").put(upload.single("image"),updateCategoryImage);
+router.route("/update-image/:id").put(upload.single("image"),updateCategoryImage);
 export default router;
