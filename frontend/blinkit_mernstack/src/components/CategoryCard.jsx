@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const CategoryCard = ({ category }) => {
   return (
     <Link
-      to={`/category/${category.id}`}
+      to={`/category/${category.categorySlug}`}
       className="bg-white rounded-xl p-4 flex flex-col items-center hover:shadow-md transition"
     >
       <img
@@ -18,4 +18,4 @@ const CategoryCard = ({ category }) => {
   );
 };
 
-export default CategoryCard;
+export default CategoryCard; // ✅ MUST BE HERE

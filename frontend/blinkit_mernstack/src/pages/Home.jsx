@@ -2,6 +2,8 @@ import React from 'react'
 import categories from "../data/categories";
 import CategoryCard from "../components/CategoryCard";
 
+
+
 const Home =() =>{
   return(
      <div className="max-w-7xl mx-auto px-4 py-6">
