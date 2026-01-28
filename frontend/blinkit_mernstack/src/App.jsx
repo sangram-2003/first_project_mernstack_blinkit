@@ -83,8 +83,8 @@ function App() {
     className='p-4 mt-4 bg-red-600'>logout</button> */}
     <div className="w-full">
        <Navbar/>
-    <Outlet/>
-    <Footer/>
+       <Outlet/>
+       <Footer/>
     </div>
 
    
